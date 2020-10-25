@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 25-Out-2020 às 11:49
+-- Generation Time: 25-Out-2020 às 22:29
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.0
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `livros` (
   `id` mediumint(9) NOT NULL,
   `nome` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `categoria` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `categoria` varchar(320) COLLATE utf8_unicode_ci DEFAULT NULL,
   `imagem` varchar(320) COLLATE utf8_unicode_ci DEFAULT NULL,
   `autor` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tipo` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -43,9 +43,10 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`id`, `nome`, `categoria`, `imagem`, `autor`, `tipo`, `status`) VALUES
-(1, 'Batman. Universo', 'Quadrinhos', './photos/batman.jpg', 'Brian Michael Bendis', 'Capa dura', 0),
+(1, 'Batman. Universo', 'Quadrinhos', './photos/batman.jpg', 'Brian Michael Bendis', 'Capa dura', 1),
 (80, 'Orgulho e Preconceito', 'Romance', 'https://images-na.ssl-images-amazon.com/images/I/81B4W8NI5CL.jpg', 'Jane Austen', 'Capa comum', 1),
-(81, 'Dom Casmurro', 'Romance, FicÃ§Ã£o, MemÃ³rias, ', 'https://www.grupoescolar.com/galeria/fotos/FE48C49E5.jpg', 'Machado de Assis', 'Capa comum', 0);
+(81, 'Dom Casmurro', 'Romance, FicÃ§Ã£o, MemÃ³rias, ', 'https://www.grupoescolar.com/galeria/fotos/FE48C49E5.jpg', 'Machado de Assis', 'Capa comum', 1),
+(87, 'Emma', 'Romance, ComÃ©dia, Romance de amor, Obra de referÃªncia, ComÃ©dia de costumes, Romance de costumes', 'https://m.media-amazon.com/images/I/41vSM 2VquL.jpg', 'Jane Austen', 'Capa comum', 1);
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `login`
