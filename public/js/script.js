@@ -259,6 +259,6 @@ function sleep(milliseconds) {
       }
     };
   
-    xhttp.open("GET", "?login=true&email="+mail+"&password="+pass, true);
+    xhttp.open("GET", "data?login=true&email="+mail+"&password="+pass, true);
     xhttp.send();
   }

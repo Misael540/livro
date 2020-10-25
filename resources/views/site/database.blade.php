@@ -1,7 +1,36 @@
 <?php
-include "config/db.php";
 
 error_reporting(0);
+
+if($_GET['email'] AND $_GET['password'] AND $_GET['login']){//verificar se esta recebendo uma requisição
+
+    $email = $_GET['email'];
+    $password = md5($_GET['password']);
+  
+    $link = mysqli_connect("127.0.0.1", "root", "", "livros");
+  
+    if($link){
+  
+      $query = "SELECT level FROM login WHERE email = '".$email."' AND `password` = '".$password."'";
+  
+      if ($result = mysqli_query($link, $query)) {
+      
+         if($row = mysqli_fetch_row($result)) {
+          $l = explode("@", $email);
+          setcookie("user",  $l[0], time()+3600);
+          setcookie("hash", sha1($password), time()+3600); 
+          echo "<!--success login!--!>";
+          die();
+          
+        }
+          mysqli_free_result($result);
+      }
+      mysqli_close($link);
+    }
+  }
+
+include "config/db.php";
+
 
 
 $id = $_GET['id'];
@@ -174,5 +203,6 @@ if($_GET['action'] == 'list' && !$_GET['id']){
             die();
         }
   }
+
 
 ?>
