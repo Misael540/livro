@@ -36,7 +36,7 @@ if(!$_COOKIE["hash"] && !$_COOKIE['user']){
     </div>
   </div>
 </nav>
-<!-- DIV EDIT LIVRO-->
+<!-- DIV DEL LIVRO-->
 <div class="divFlutuanteHidden" id="del" name="del" style="top: 60%">
 <fieldset>
   <center>

@@ -141,8 +141,8 @@ if($_GET['action'] == 'list' && $_GET['id']){
     $status_html
     </legend>
     <span name='spanreturn2' id='spanreturn2' style='display: block;'></span>
-    <button class='button-add' type='button' onclick='edit($row[0], true);'> <img src='photos/adicionar.png' width='40' height='40' >Salvar</button>
-    <button class='button-add' type='button' onclick='voltar();'> <img src='photos/x.png' width='40' height='40' >Fechar</button>
+    <button class='button-add' type='button' onclick='edit($row[0], true);'> <img src='photos/memoria.png' width='28' height='28' > Salvar</button>
+    <button class='button-add' type='button' onclick='voltar();'> <img src='photos/x.png' width='40' height='40' >Cancelar</button>
       
     </center>
     </fieldset>
