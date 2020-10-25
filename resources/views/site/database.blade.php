@@ -127,7 +127,7 @@ if($_GET['action'] == 'list' && $_GET['id']){
     <legend>Categoria:
     <input type='text' style='width:60%;' id='categoria-edit' name='categoria-edit' value='$row[2]'/></legend>
     <legend>Foto(URL):
-    <input type='text' id='imagem-edit' name='imagem-edit' value='$row[3]'/>
+    <input type='text' id='imagem-edit' name='imagem-edit' onerror='handleError(this)' value='$row[3]'/>
     <br><br>
     <img src='$row[3]' width='100' height='120' >
     <br><br>
@@ -210,7 +210,7 @@ if($_GET['action'] == 'list' && !$_GET['id']){
         <tr><td>$row[0]</td>
         <td>$row[1]</td>
         <td>$row[2]</td>
-        <td><img src='$row[3]' width='80' height='100'></td>
+        <td><img src='$row[3]' width='80' height='100'  onerror='handleError(this)'></td>
         <td>$row[4]</td>
         <td>$row[5]</td>
         <td>$row[6]</td>

@@ -152,6 +152,13 @@ function listing(data){
     listing();
   
   }
+
+  function handleError(image) {
+    image.onerror = "";
+    image.src = "/photos/img-default.png";
+    return true;
+ }
+
   
   function Poupdel(id){
   
