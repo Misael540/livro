@@ -196,3 +196,69 @@ function listing(data){
   
   }
   
+  
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+  
+  function validate(){
+      var mail = document.getElementById("inputEmail").value;
+      var pass = document.getElementById("inputPassword").value;
+  
+      if(mail == false || pass == false){
+          document.getElementById("loading").style.display = "none";
+          $("#spanreturn").text("Preencha os campos obrigatórios!");
+          document.getElementById("spanreturn").style.color = "#fd6f6f";
+      
+      }else{
+  
+          if(mail.indexOf("@") != -1 && mail.indexOf(".") != -1 && mail.indexOf(" ") == -1){
+              $("#spanreturn").text("");
+              document.getElementById("loading").style.display = "";
+              checkar(mail,pass);
+  
+          }else{
+              document.getElementById("loading").style.display = "none";
+              $("#spanreturn").text("E-mail inválido!");
+              document.getElementById("spanreturn").style.color = "#fd6f6f";
+          }
+      }
+  }
+  
+  function checkar(mail,pass){
+  
+    var xhttp;
+  
+    if (window.XMLHttpRequest) {
+      xhttp = new XMLHttpRequest();
+  
+    }else{
+      xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  
+    }
+  
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        
+        if(this.responseText.indexOf("success login!") && this.responseText.indexOf("script") == -1){
+          $("#spanreturn").text("Sucesso, você será redirecionado...");
+          document.getElementById("spanreturn").style.color = "#6ffdab";
+          sleep(2000);
+          $(location).attr('href', '/menu');
+  
+        }else{
+          document.getElementById("loading").style.display = "none";
+          $("#spanreturn").text("Dados inválidos!");
+          document.getElementById("spanreturn").style.color = "#fd6f6f";
+  
+        }
+      }
+    };
+  
+    xhttp.open("GET", "?login=true&email="+mail+"&password="+pass, true);
+    xhttp.send();
+  }
