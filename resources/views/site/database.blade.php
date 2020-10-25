@@ -189,7 +189,7 @@ if($_GET['action'] == 'list' && $_GET['search']){
     
     $livro = array_unique($livro);
 
-    for ($i=0;$i<count($livro);$i++) { 
+    for ($i=0;$i<(count($livro) + 1);$i++) { 
         echo $livro[$i]."\n";
     }
     die();
