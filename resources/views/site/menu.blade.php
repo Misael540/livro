@@ -36,13 +36,13 @@ if(!$_COOKIE["hash"] && !$_COOKIE['user']){
     </div>
   </div>
 </nav>
-<!-- DIV DEL LIVRO-->
+<!-- DIV  LIVRO-->
 <div class="divFlutuanteHidden" id="del" name="del" style="top: 60%">
 <fieldset>
   <center>
     <span style="display: block; color:white;">Tem certeza que quer excluir?</span>
     <input type="hidden" name="id" id="id" value="">
-    <button class="button-add" type="button" onclick="del()"> <img src="photos/adicionar.png" width='40' height='40' >Sim</button>
+    <button class="button-add" type="button" onclick="del()"> <img src="photos/lixeira-certeza.png" width='40' height='40' >Sim</button>
     <button class="button-add" type="button" onclick="voltar();"> <img src="photos/x.png" width='40' height='40' >Não</button>
   </center>
 </fieldset>
