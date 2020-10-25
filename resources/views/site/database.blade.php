@@ -152,6 +152,50 @@ if($_GET['action'] == 'list' && $_GET['id']){
 
 }
 
+if($_GET['action'] == 'list' && $_GET['search']){
+    
+    $search = $_GET['search'];
+
+    $query  = "SELECT * FROM livros WHERE nome LIKE '%$search%'";
+    if ($result = mysqli_query($link, $query)) {
+      while($row = mysqli_fetch_row($result)) {
+        if($row[6] == 1){ $row[6] = "Sim";}else{$row[6] = "Não";}
+        $livros .= "\n<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td><img src='$row[3]' width='80' height='100'></td><td>$row[4]</td><td>$row[5]</td><td>$row[6]</td><td><a href='javascript:edit($row[0])'><img src='./photos/edit.png' width='40' height='40'><a><br><br><a href='javascript:Poupdel($row[0])'><img src='./photos/lixeira.png' width='30' height='30'><a></td></tr>";
+        }
+      mysqli_free_result($result);
+    }
+   
+    $query  = "SELECT * FROM livros WHERE categoria LIKE '%$search%'";
+    if ($result = mysqli_query($link, $query)) {
+      while($row = mysqli_fetch_row($result)) {
+        if($row[6] == 1){ $row[6] = "Sim";}else{$row[6] = "Não";}
+        $livros .= "\n<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td><img src='$row[3]' width='80' height='100'></td><td>$row[4]</td><td>$row[5]</td><td>$row[6]</td><td><a href='javascript:edit($row[0])'><img src='./photos/edit.png' width='40' height='40'><a><br><br><a href='javascript:Poupdel($row[0])'><img src='./photos/lixeira.png' width='30' height='30'><a></td></tr>";
+        }
+      mysqli_free_result($result);
+    }
+
+    $query  = "SELECT * FROM livros WHERE autor LIKE '%$search%'";
+    if ($result = mysqli_query($link, $query)) {
+      while($row = mysqli_fetch_row($result)) {
+        if($row[6] == 1){ $row[6] = "Sim";}else{$row[6] = "Não";}
+        $livros .= "\n<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td><img src='$row[3]' width='80' height='100'></td><td>$row[4]</td><td>$row[5]</td><td>$row[6]</td><td><a href='javascript:edit($row[0])'><img src='./photos/edit.png' width='40' height='40'><a><br><br><a href='javascript:Poupdel($row[0])'><img src='./photos/lixeira.png' width='30' height='30'><a></td></tr>";
+        }
+      mysqli_free_result($result);
+    }
+    
+    mysqli_close($link);
+
+    $livro = explode("\n", $livros);
+    
+    $livro = array_unique($livro);
+
+    for ($i=0;$i<count($livro);$i++) { 
+        echo $livro[$i]."\n";
+    }
+    die();
+  }
+
+
 if($_GET['action'] == 'list' && !$_GET['id']){
     
     $query = "SELECT `id`, `nome`, `categoria`, `imagem`, `autor`, `tipo`, `status` FROM `livros` ORDER BY id desc";
