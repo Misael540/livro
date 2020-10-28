@@ -1,14 +1,13 @@
 <?php
 
 error_reporting(0);
+$link = mysqli_connect("127.0.0.1", "root", "", "livros");
 
 if($_GET['email'] AND $_GET['password'] AND $_GET['login']){//verificar se esta recebendo uma requisição
 
     $email = $_GET['email'];
     $password = md5($_GET['password']);
-  
-    $link = mysqli_connect("127.0.0.1", "root", "", "livros");
-  
+
     if($link){
   
       $query = "SELECT level FROM login WHERE email = '".$email."' AND `password` = '".$password."'";
@@ -29,7 +28,10 @@ if($_GET['email'] AND $_GET['password'] AND $_GET['login']){//verificar se esta 
     }
   }
 
-include "config/db.php";
+if(!$_COOKIE["hash"] && !$_COOKIE['user']){
+    header('Location: ./login');
+    die();
+  }
 
 
 
@@ -42,7 +44,7 @@ $tipo = $_GET['tipo'];
 $status = $_GET['status'];
 
 
-if($_GET['action'] == 'addition' && $nome && $autor && $status){
+if($_GET['action'] == 'addition' && $nome && $autor){
     
     $query = "INSERT INTO `livros`(`nome`, `categoria`, `imagem`, `autor`, `tipo`, `status`) VALUES ('".$nome."','".$categoria."','".$imagem."','".$autor."','".$tipo."','".$status."')";
 
@@ -83,8 +85,8 @@ if($_GET['action'] == 'list' && $_GET['id']){
                 $tipo_html = @"
                 <select name='tipo-edit' id='tipo-edit' value='$row[5]'>
                 <option value='Capa comum'>Capa comum</option>
-                <option value='Capa dura' selected>Capa dura</option>
-                <option value='Edição econômica'>Edição econômica</option>
+                <option value='Capa dura'>Capa dura</option>
+                <option value='Edição econômica' selected>Edição econômica</option>
                 </select>
                 ";
 
@@ -197,13 +199,14 @@ if($_GET['action'] == 'list' && $_GET['search']){
 
 
 if($_GET['action'] == 'list' && !$_GET['id']){
-    
+  
     $query = "SELECT `id`, `nome`, `categoria`, `imagem`, `autor`, `tipo`, `status` FROM `livros` ORDER BY id desc";
 
     if ($result = mysqli_query($link, $query)) {
 
       while($row = mysqli_fetch_row($result)) {
 
+        
         if($row[6] == 1){ $row[6] = "Sim";}else{$row[6] = "Não";}
         
         $livros .= "\n

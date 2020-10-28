@@ -29,12 +29,12 @@ if($_COOKIE["hash"]){
 <body class="text-center">
 <form id="form" class="form-signin">
 <fieldset>
-  <img class="mb-4" src="/login.png" alt="" width="82" height="82">
+  <img class="mb-4" src="photos/login.png" alt="" width="82" height="82">
   <h1 class="h4 mb-3 font-weight-normal">Entre em sua conta.</h1>
   <label for="inputEmail" class="sr-only">Email</label>
-  <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Endereço de E-mail" value="" required autofocus>
+  <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Endereço de E-mail" value="admin1@site.com" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Senha" value="" required>
+  <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Senha" value="123" required>
   <div class="checkbox mb-3">
     <label class="remember">
       <input class="checkbox-round" type="checkbox" value="remember-me"> Lembrar-me

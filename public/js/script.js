@@ -64,6 +64,13 @@ function listing(data){
   
   }
   
+  function exit(){
+      var c = document.cookie.split("; ");
+      for (i in c)
+       document.cookie =/^[^=]+/.exec(c[i])[0]+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+       window.location.href = "/login";
+  }
+
   function add(int){
   
     $("#spanreturn1").text("");
@@ -80,7 +87,7 @@ function listing(data){
       var status = document.getElementById("status").value;
   
       if(nome && autor && status){
-  
+        
         get("action=addition&nome="+nome+"&categoria="+categoria+"&imagem="+imagem+"&autor="+autor+"&tipo="+tipo+"&status="+status);   
         listing();
   
@@ -88,11 +95,13 @@ function listing(data){
         $("#spanreturn1").text("Preencha os campos obrigatórios (*) !");
         document.getElementById("spanreturn1").style.color = "#fd6f6f";
       }
+      listing();
   
     }else{
     document.getElementById("add").className = 'divFlutuante';
     
     }
+    
   }
   
   function edit(id, save){
@@ -192,7 +201,7 @@ function listing(data){
   
       xhttp.open("GET", "data?action=del&id=" + id, true);
       xhttp.send();
-  
+      
   }
   
   

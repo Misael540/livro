@@ -1,5 +1,7 @@
 <?php
 
+
+
 error_reporting(0);
 if(!$_COOKIE["hash"] && !$_COOKIE['user']){
     header('Location: ./login');
@@ -12,8 +14,8 @@ if(!$_COOKIE["hash"] && !$_COOKIE['user']){
 <html lang="pt-br">
 <head>
   <title>Menu</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/menu.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,23 +26,22 @@ if(!$_COOKIE["hash"] && !$_COOKIE['user']){
 </head>
 <body>
 
-<div class="jumbotron" style="margin-bottom:0">
-  <h1 style="color:white;">&nbsp;&nbsp;Gerenciamento de livros</h1>
-  <p></p> 
+<div  class="jumbotron text-center">
+  <h1 style="color:white;">Gerenciamento de livros</h1>
 </div>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+<nav class="navbar navbar-inverse" style="background:none; border:none;">
+  <div class="container-fluid" >
     <div class="navbar-header">
-      <span class="navbar-brand">Olá, {{$_COOKIE['user']}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="navbar-brand" style="color:white;">Olá, {{$_COOKIE['user']}}</span>
     </div>
+    <img onclick="exit();" src="photos/exit.png" width='50' height='50' style="position:sticky; left:100%;" >
   </div>
 </nav>
 <!-- DIV  LIVRO-->
-<div class="divFlutuanteHidden" id="del" name="del" style="top: 60%">
+<div class="divFlutuanteHidden" id="del" name="del" style="top: 55%; left:56%">
 <fieldset>
   <center>
-    <span style="display: block; color:white;">Tem certeza que quer excluir?</span>
+    <span style="display: block; color:white;">Tem certeza que deseja excluir?</span>
     <input type="hidden" name="id" id="id" value="">
     <button class="button-add" type="button" onclick="del()"> <img src="photos/lixeira-certeza.png" width='40' height='40' >Sim</button>
     <button class="button-add" type="button" onclick="voltar();"> <img src="photos/x.png" width='40' height='40' >Não</button>
@@ -49,7 +50,7 @@ if(!$_COOKIE["hash"] && !$_COOKIE['user']){
 </div>
 
 <!-- DIV EDIT LIVRO-->
-<div class="divFlutuanteHidden" id="edit" name="edit" style="top: 20%">
+<div class="divFlutuanteHidden" id="edit" name="edit" style="top: 16%">
   
 </div>
 <!-- DIV ADD LIVRO-->
@@ -89,11 +90,11 @@ if(!$_COOKIE["hash"] && !$_COOKIE['user']){
 </div>
 <div class="container">
  <button class="button-add" type="button" onclick="add();"> <img src="photos/adicionar.png" width='40' height='40' >Adicionar livro&nbsp;&nbsp;</button>
- <legend style="color: #222; Font-size: 18px;">Buscar: <input type="text" name="buscar" id="buscar" value onchange="listing(this.value)" placeholder="Palavra chave"></legend>
- <br>
+ <br><br>
+ <legend style="color: #222; Font-size: 18px;">Buscar: <input type="text" name="buscar" id="buscar" value onchange="listing(this.value)" placeholder="Palavra chave"> <br></legend>
 </div>
 <br>
-<div class="container">
+<div class="container" style="overflow:auto;">
     <table id="dtVerticalScroll" class="table table-striped table-bordered table-sm" cellspacing="0" width="70%">
     <thead>
         <tr>
